@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -26,7 +27,7 @@ func main() {
 
 	// Initialize Redis client
 	redisClient := redis.NewClient(&redis.Options{
-		Addr: "localhost:6379",
+		Addr: os.Getenv("REDIS_ADDR"), // will resolve to redis:6379
 		DB:   0,
 	})
 
